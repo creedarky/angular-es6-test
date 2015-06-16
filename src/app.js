@@ -1,6 +1,190 @@
+/**Initial State **/
+//import {ComponentAnnotation as Component, ViewAnnotation as View, bootstrap} from 'angular2/angular2';
+//
+//
+//@Component({
+//  selector: "clicker"
+//})
+//@View({
+//  template: '<div>' +
+//  '<button id="button" (mousemove)="onMouseMove($event)" (custom)="onCustom()" (click)="onClick()">Click me</button>' +
+//  '<h1>position: {{x}}, {{y}} ' +
+//  'clickCounter: {{clickCounter}} ' +
+//  'customCounter: {{ customCounter}}</h1>' +
+//  '</div>'
+//})
+//class Clicker {
+//  customCounter = 0;
+//  clickCounter = 0;
+//  x = 0;
+//  y = 0;
+//
+//  constructor() {
+//    var button = document.querySelector('#button');
+//    setInterval(function () {
+//      button.dispatchEvent(new Event("custom"));
+//    }, 1000);
+//  }
+//
+//  onMouseMove(event) {
+//    this.x = event.x;
+//    this.y = event.y;
+//  }
+//
+//  onClick() {
+//    this.clickCounter++;
+//  }
+//
+//  onCustom() {
+//    this.customCounter++;
+//  }
+//}
+//
+//@Component({
+//  selector: 'app'
+//
+//})
+//@View({
+//  templateUrl: 'app.html',
+//  directives: [Clicker]
+//})
+//class App {
+//
+//  constructor() {
+//  }
+//}
+//
+//
+//bootstrap(App);
+
+
+/** BINDING **/
+//import {ComponentAnnotation as Component, ViewAnnotation as View, bootstrap} from 'angular2/angular2';
+//
+//
+//@Component({
+//  selector: "clicker"
+//})
+//@View({
+//  template: '<div>' +
+//  '<button id="button" (mousemove)="onMouseMove($event)" (custom)="onCustom()" (click)="onClick()">Click me</button>' +
+//  '<h1>position: {{x}}, {{y}} ' +
+//  'clickCounter: {{clickCounter}} ' +
+//  'customCounter: {{ customCounter}}</h1>' +
+//  '</div>'
+//})
+//class Clicker {
+//  customCounter = 0;
+//  clickCounter = 0;
+//  x = 0;
+//  y = 0;
+//
+//  constructor() {
+//    var button = document.querySelector('#button');
+//    setInterval(function () {
+//      button.dispatchEvent(new Event("custom"));
+//    }, 1000);
+//  }
+//
+//  onMouseMove(event) {
+//    this.x = event.x;
+//    this.y = event.y;
+//  }
+//
+//  onClick() {
+//    this.clickCounter++;
+//  }
+//
+//  onCustom() {
+//    this.customCounter++;
+//  }
+//}
+//
+//@Component({
+//  selector: "input-binding"
+//})
+//@View({
+//  template: '<div>' +
+//  '<label>Input text</label>' +
+//  '<input id="input" type="text" #ref (custom)="custom()" value="" (keyup)="keyUp(ref)"> ' +
+//  '<hr/>' +
+//  '<h1 [style.color]="ref.value">' +
+//  'value = {{ref.value}}<br/>' +
+//  'this.text= {{text}}<br/>' +
+//  '</div>'
+//})
+//class InputBinding {
+//  text = '';
+//
+//  constructor() {
+//  }
+//
+//  keyUp(ref) {
+//    console.log(ref);
+//    this.text = ref.value;
+//  }
+//
+//}
+//
+//@Component({
+//  selector: 'app'
+//
+//})
+//@View({
+//  templateUrl: 'app.html',
+//  directives: [Clicker, InputBinding]
+//})
+//class App {
+//
+//  constructor() {
+//  }
+//}
+//
+//
+//bootstrap(App);
+
+
+
+//Final Code
 import {ComponentAnnotation as Component, ViewAnnotation as View, bootstrap, NgIf, NgFor} from 'angular2/angular2';
-import {Injector, Inject, Injectable} from 'angular2/di'
 import {TeamStore} from 'services/TeamStore'
+@Component({
+  selector: "clicker"
+})
+@View({
+  template: '<div>' +
+  '<button id="button" (mousemove)="onMouseMove($event)" (custom)="onCustom()" (click)="onClick()">Click me</button>' +
+  '<h1>position: {{x}}, {{y}} ' +
+  'clickCounter: {{clickCounter}} ' +
+  'customCounter: {{ customCounter}}</h1>' +
+  '</div>'
+})
+class Clicker {
+  customCounter = 0;
+  clickCounter = 0;
+  x = 0;
+  y = 0;
+
+  constructor() {
+    var button = document.querySelector('#button');
+    setInterval(function () {
+      button.dispatchEvent(new Event("custom"));
+    }, 1000);
+  }
+
+  onMouseMove(event) {
+    this.x = event.x;
+    this.y = event.y;
+  }
+
+  onClick() {
+    this.clickCounter++;
+  }
+
+  onCustom() {
+    this.customCounter++;
+  }
+}
 
 
 @Component({
@@ -70,15 +254,11 @@ class TeamList {
 })
 @View({
   templateUrl: 'app.html',
-  directives: [NgIf, InputBinding, TeamList]
+  directives: [ InputBinding, TeamList, Clicker ]
 })
 class App {
-  name = 'World';
 
   constructor() {
-    setTimeout(() => {
-      this.name = 'New Item'
-    }, 2000);
   }
 }
 
