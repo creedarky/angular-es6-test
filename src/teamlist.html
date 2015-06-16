@@ -1,0 +1,19 @@
+<h1> Team List</h1>
+
+<div *ng-if="selectedMember != null">
+  <h2>{{ selectedMember.name }} - {{ selectedMember.title }}</h2>
+  <h4>{{selectedMember.title_likes}}</h4>
+  <p *ng-for="#like of selectedMember.likes">
+    {{ like }}
+  </p>
+  <h4>Description</h4>
+  <p *ng-for="#desc of selectedMember.desc">
+    {{ desc }}
+  </p>
+</div>
+
+<ul>
+  <li *ng-for="#member of teamMembers; #i = index" (click)="selectMember(i)">
+    {{ member.page_title }}
+  </li>
+</ul>
